@@ -9,7 +9,7 @@
 
 ### ODPS 工具准备
 
-开通MaxCompute服务之后，通过命令行工具`odpscmd`来对其进行操作。流程包中 odpscmd 目录下已经准备了一份配置好的odpscmd，`odpscmd/bin/odpscmd`即可执行，并在 odpscmd 中使用 `show tables;` 列出项目中已经存在的表，用 `desc na12878_fastq_merge;` 查看 `na12878_fastq_merge` 这张表的 schema，用 `read na12878_fastq_merge 10;` 来查看这张表的前 10 行，用`CREATE TABLE test_table AS SELECT * FROM fq_r0140900861 limit 10000;`从fq_r0140900861表中抽取前10000行生成至一个新表`test_table`。
+开通MaxCompute服务之后，通过命令行工具`odpscmd`来对其进行操作。流程包中 odpscmd 目录下已经准备了一份配置好的odpscmd，`odpscmd/bin/odpscmd`即可执行，并在 odpscmd 中使用 `show tables;` 列出项目中已经存在的表，用 `desc na12878_fastq_merge;` 查看 `na12878_fastq_merge` 这张表的 schema，用 `read na12878_fastq_merge 10;` 来查看这张表的前 10 行，用`CREATE TABLE test_table AS SELECT * FROM fq_r0140900861 limit 10000;` 查看一个表（如`fq_whyd15030427_a`）的记录数，用`select count(*) from fq_whyd15030427_a;`，从表（如fq_r0140900861）中抽取前10000行生成至一个新表`test_table`。
 >更多 odpscmd 的使用方法，可以参考我们的官方文档 https://help.aliyun.com/document_detail/27971.html
 
 因为 fastq 的特殊性，使用 odpscmd 中的通用上传命令无法做到 schema 对应，因此在上传数据的时候使用了专门用于做 ETL 的工具 [tattoo](http://repo.aliyun.com/etl)，位于流程中的 `tattoo` 目录。

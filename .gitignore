@@ -1,6 +1,8 @@
 trash/
 tmp/
 
+~*.ppt
+~*.pptx
 *.vcf
 *.log
 *.sh
