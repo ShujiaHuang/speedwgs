@@ -180,13 +180,13 @@ time perl odps_gene.pl -union gvcf_merged_r0140900815 gvcf_r0140900815_3 > m.o.l
 
 time perl odps_gene.pl -genotype vcf_for_combine_r0140900815 gvcf_merged_r0140900815 899 > g.o.log 2> g.e.log && echo "** vcf_for_combine_r0140900815 done **"
 
-time perl odps_gene.pl -combine-vcf r0140900815_vcf vcf_for_combine_r0140900815 > c.o.log 2> c.e.log && echo "** r0140900815.vcf done **"
+time perl odps_gene.pl -combine-vcf r0140900815_2_vcf vcf_for_combine_r0140900815 > c.o.log 2> c.e.log && echo "** r0140900815.vcf done **"
 ```
 
 ### Download The final VCF file
 
 ```
-bin/download.pl r0140900815_vcf r0140900815.vcf conf/odps_config.ini
+bin/download.pl r0140900815_2_vcf r0140900815.vcf conf/odps_config.ini
 ```
 
 
