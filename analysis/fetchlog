@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+P=`dirname $0`
+exec java -classpath $P/fetchlog-1.0-jar-with-dependencies.jar FetchLog $@

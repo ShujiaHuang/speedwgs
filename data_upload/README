@@ -1,0 +1,6 @@
+Usage:
+
+From NA12878_1.fastq, NA12878_2.fastq TO hdjy_na12878_fastq_merge.
+
+- merge: ./merge_fastq.pl NA12878_1.fastq NA12878_2.fastq > tmp_merge_fastq
+- upload: tattoo -w 8 --config conf/odps_config.ini -t hdjy_na12878_fastq_merge read-text tmp_merge_fastq --num-lines 8

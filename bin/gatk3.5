@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+P=`dirname $0`
+LD_LIBRARY_PATH=$P /usr/ali/jre1.7.0_79/bin/java -Xmx3G -jar $P/GenomeAnalysisTK.jar $@
+# jre8 path
+# /usr/ali/ali-jre8u65-b17-3/bin/java
+# jmx options for remote profiling
+# -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.port=1098

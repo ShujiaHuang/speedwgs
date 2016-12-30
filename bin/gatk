@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+P=`dirname $0`
+/usr/ali/jre/bin/java -Xmx2G -jar $P/GenomeAnalysisTKLite.jar $@
