@@ -5,7 +5,6 @@ tmp/
 ~*.pptx
 *.vcf
 *.log
-*.sh
 *.ini
 *.py[cdx]
 .DS_Store
