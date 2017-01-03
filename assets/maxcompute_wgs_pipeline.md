@@ -53,8 +53,12 @@ gatk -nt 4 -T PrintReads -R $refgenomefasta \
 
 ```
 
+# 变异检测
 
-# 关于HaplotypeCaller有两种方法：（1）直接群体进行HaplotypeCaller，这适合于单样本或者不需要扩展和改动的多样本形式；（2）【推荐】每个样本先各自生成gvcf(HaplotypeCaller+GVCF)，之后再进行群体genotype，这种方法其实更加灵活，推荐！
+关于这一步骤中的HaplotypeCaller有两种方法
+
+（1）直接群体进行HaplotypeCaller，这适合于单样本或者不需要扩展和改动的多样本形式；
+（2）每个样本先各自生成gvcf(HaplotypeCaller+GVCF)，然后再进行群体genotype，这种方法其实更加灵活，**推荐！**
 
 ## 直接群体进行HaplotypeCaller
 
