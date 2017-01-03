@@ -1,0 +1,1 @@
+time perl odps_gene.pl -haplotype gvcf_r0140900815_3 fq_r0140900815 899 "@RG\tID:HiseqEAAAGAAA-98\tPL:illumina\tPU:150430_I00137_F\tLB:HiseqAAGAAA-98\tSM:R0140900815\tCN:GIAB" > step1.R0140900815.o.log 2> step1.R0140900815.e.log && echo " ** gvcf_r0140900815_3 done **"
