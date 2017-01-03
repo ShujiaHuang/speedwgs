@@ -2,11 +2,14 @@
 # BWA MEM 参数
 bwa mem (options) *idxbase* *in1.fq* *in2.fq*
 options:
-## -R str  read group header line such as “@RG\tID:HiseqEAAAGAAA-98\tPL:illumina\t” (null)
+```
+## -R str  read group header line such as “@RG\tID:HiseqEAAAGAAA-98\tPL:illumina\tSM:NA12878\tCN:GIAB” 
 -M int  mark shorter split hits as secondary
 -t int  number of threads (1)
+```
 
 # samtools 参数
+```
 samtools sort in.bam
 -@  Set number of sorting and compression threads (1)
 -m  Set maximum memory per thread; suffix K/M/G recognized (768M)
@@ -14,8 +17,8 @@ samtools sort in.bam
 samtools rmdup input.sort.bam output.bam
 -s  rmdup for SE reads
 -S  treat PE reads as SE in rmdup (force -s)
+```
 
-=============================================================================
 
 # GATK 流程以及参数：
 ```
@@ -98,8 +101,8 @@ java -jar GenomeAnalysisTK.jar \
 ### 第一种，先对每个样本的相同区域（如 reducer中规定的那些）各自生成区域性的GVCF文件，
 
 然后分别Call这些同区域的GVCF，得到这个区域的vcf结果,最终再合并：
-=======================================================================
-#### 生成gvcf(这是非常正确的)
+
+* 生成gvcf(这是非常正确的)
 ```
 for id_start_end in `cat reducer.tsv` ; do
 	for i in {1..sample_num}; do 
@@ -129,7 +132,7 @@ done
 
 ```
 
-最后合并：
+* 结果合并
 ```
 gatk -T CombineVariants  \
 	-R $fasta \
@@ -173,7 +176,9 @@ gatk -T GenotypeGVCFs \
 ```
 ************
 
-## 这是最后一步，也是通用的一步，最后得到后续变异结果（vcf format）之后都需要进行的质控，MaxCompute中不需要进行。
+## 变异质控
+
+这是最后一步，也是通用的一步，最后得到候选变异结果（vcf format）之后都需要进行的质控，但考虑到速度，MaxCompute中不需要进行。
 
 ```
 ## SNP Recalibrator
