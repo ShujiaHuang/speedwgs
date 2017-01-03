@@ -103,6 +103,7 @@ java -jar GenomeAnalysisTK.jar \
 然后分别Call这些同区域的GVCF，得到这个区域的vcf结果,最终再合并：
 
 * 生成gvcf(这是非常正确的)
+
 ```
 for id_start_end in `cat reducer.tsv` ; do
 	for i in {1..sample_num}; do 
@@ -133,6 +134,7 @@ done
 ```
 
 * 结果合并
+
 ```
 gatk -T CombineVariants  \
 	-R $fasta \
