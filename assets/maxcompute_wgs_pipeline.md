@@ -67,12 +67,13 @@ gatk -nt 4 -T PrintReads -R $refgenomefasta \
 
 ```
 # haplotype caller by chromosome
-gatk  -T HaplotypeCaller \ 
+for i in {1..22} X Y MT ; do
+  java -jar GenomeAnalysisTK.jar  -T HaplotypeCaller \ 
     -R human_g1k_v37.fasta \
     -I NA12878_realign_BQSR4.bam \
     -D dbsnp_138.b37.vcf \ 
-    -L Y \
-    -o NA12878.HC.X.raw.vcf \ 
+    -L ${i} \
+    -o NA12878.HC.${i}.raw.vcf \ 
     -stand_call_conf 50 \ 
     -A QualByDepth \ 
     -A RMSMappingQuality \ 
@@ -80,7 +81,10 @@ gatk  -T HaplotypeCaller \
     -A ReadPosRankSumTest \ 
     -A FisherStrand \ 
     -A StrandOddsRatio \ 
-    -A Coverage && echo “NA12878.HC.X.raw.vcf done”
+    -A Coverage && echo “NA12878.HC.${i}.raw.vcf done”}
+
+done
+
 
 # combine vcf
 java -jar GenomeAnalysisTK.jar \
@@ -180,7 +184,7 @@ gatk -T GenotypeGVCFs \
 
 ## 变异质控
 
-这是最后一步，也是通用的一步，最后得到候选变异结果（vcf format）之后都需要进行的质控，但考虑到速度，MaxCompute中不需要进行。
+这是最后一步，也是通用的一步，最后得到候选变异结果（vcf format）都需要进行的质控，但考虑到速度，MaxCompute中不需要进行，可以线下进行。
 
 ```
 ## SNP Recalibrator
